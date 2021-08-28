@@ -8,16 +8,16 @@
                         mdi-view-dashboard
                     </v-icon>Dashboard
                 </v-btn>
-          <!--      <v-btn color="white" v-if="this.$store.state.userModule.token && this.$store.state.postsModule.search && this.$store.state.postsModule.search.length > 0" :to="{path: '/posts', query: { page: pageQuery, perPage: perPage, search: search }}" text>
+                <v-btn color="white" v-if="this.$store.state.userModule.token && this.$store.state.postsModule.search && this.$store.state.postsModule.search.length > 0" :to="{path: '/posts', query: { page: pageQuery, perPage: perPage, search: search }}" text>
                     <v-icon class="mr-2" aria-hidden="false">
                         mdi-note-multiple-outline
                     </v-icon>Posts
-                </v-btn>-->
-             <!--   <v-btn color="white" v-else-if="this.$store.state.userModule.token" :to="{path: '/posts', query: { page: pageQuery, perPage: perPage }}" text>
+                </v-btn>
+                <v-btn color="white" v-else-if="this.$store.state.userModule.token" :to="{path: '/posts', query: { page: pageQuery, perPage: perPage }}" text>
                     <v-icon class="mr-2" aria-hidden="false">
                         mdi-note-multiple-outline
                     </v-icon>Posts
-                </v-btn>-->
+                </v-btn>
 
                 <div class="float-right">
                     <v-menu offset-y>
@@ -81,12 +81,12 @@
                                     </v-btn>
                                 </v-list-item-title>
                             </v-list-item>
-                          <!--  <v-list-item v-if="this.$store.state.userModule.token && this.$store.state.postsModule.search && this.$store.state.postsModule.search.length > 0">
+                            <v-list-item v-if="this.$store.state.userModule.token && this.$store.state.postsModule.search && this.$store.state.postsModule.search.length > 0">
                                 <v-list-item-title>
                                     <v-btn :to="{path: '/my-posts', query: { page: pageQuery, perPage: perPage, search: search }}" text>My posts</v-btn>
                                 </v-list-item-title>
-                            </v-list-item>-->
-                         <!--   <v-list-item v-else-if="this.$store.state.userModule.token">
+                            </v-list-item>
+                            <v-list-item v-else-if="this.$store.state.userModule.token">
                                 <v-list-item-title>
                                     <v-btn :to="{path: '/my-posts', query: { page: pageQuery, perPage: perPage }}" text>
                                         <v-icon class="mr-2" aria-hidden="false">
@@ -94,7 +94,7 @@
                                         </v-icon>My posts
                                     </v-btn>
                                 </v-list-item-title>
-                            </v-list-item>-->
+                            </v-list-item>
                         </v-list>
                     </v-menu>
                 </div>
@@ -129,20 +129,20 @@ export default Vue.extend({
     computed: {
         ...mapGetters(['GET_AUTH_DATA']),
 
-   //     perPage() {
-   //         return this.$store.state.postsModule.postsLimit
-   //     },
-  //      pageQuery() {
-   //         return this.$store.state.postsModule.pageUrl ? this.$store.state.postsModule.pageUrl : 1
-   //     },
+        perPage() {
+            return this.$store.state.postsModule.postsLimit
+        },
+        pageQuery() {
+            return this.$store.state.postsModule.pageUrl ? this.$store.state.postsModule.pageUrl : 1
+        },
 
-   //     search() {
-   //         if (this.$store.state.postsModule.search.length > 0) {
-   //             return this.$store.state.postsModule.search
-   //         } else {
-   //             return ''
-   //         }
-   //     }
+        search() {
+            if (this.$store.state.postsModule.search.length > 0) {
+                return this.$store.state.postsModule.search
+            } else {
+               return ''
+            }
+        }
 
 
     },

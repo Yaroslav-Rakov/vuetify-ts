@@ -25,8 +25,8 @@ const postsModule = {
         day: "numeric",
       };
       state.posts.map((x:any) => {
-        let date = new Date(x.dateCreated)
-        x.dateCreated = date.toLocaleDateString("en-EN", <Object>options)
+        const date = new Date(x.dateCreated)
+          x.dateCreated = date.toLocaleDateString("en-EN", <Record<string, unknown>>options)
       })
 
     },
@@ -48,7 +48,7 @@ const postsModule = {
     SET_SORT(state: any, sort: string) {
       state.sortChoice = sort
     },
-      SET_POST_DATA(state: any, post: Object) {
+      SET_POST_DATA(state: any, post: Record<string, unknown>) {
       state.postData = post
     }
 
@@ -87,8 +87,8 @@ const postsModule = {
       return state.postData;
     }
   },
-  actions: {
-      ACTION_SEARCH({ commit }: { commit: Function }, search: string) {
+    actions: {
+        ACTION_SEARCH({ commit }: any , search: string) {
       commit("SET_SEARCH", search);
     },
       ACTION_SORT({ commit, state }: any , sort: string) {
@@ -120,16 +120,16 @@ const postsModule = {
       }
     },
 
-    ACTION_PAGE_URL({ commit }:any, pageUrl:number) {
+        ACTION_PAGE_URL({ commit }: any, pageUrl: any) {
       commit("SET_PAGE_URL", pageUrl);
     },
 
-      ACTION_NEW_POSTS_LIMIT({ commit }: any, postsLimit:number) {
+        ACTION_NEW_POSTS_LIMIT({ commit }: any, postsLimit: any) {
       commit("SET_NEW_POSTS_LIMIT", postsLimit)
     },
 
-      ACTION_POSTS({ commit, state, rootState, dispatch }: any, page: string | number, postedBy: string) {
-      // debugger
+        ACTION_POSTS({ commit, state, rootState, dispatch }: any, page: any, postedBy: any) {
+      
       console.log('inside ACTION_POSTS function');
       let search = 'search=' + state.search + '&';
       if (page) {
@@ -182,7 +182,7 @@ const postsModule = {
     //       console.error("There was an error!", error);
     //     });
     // },
-    ACTION_POST_DATA({ commit, rootState }:any, id:string) {
+    ACTION_POST_DATA({ commit, rootState }:any, id:any) {
       api.get("posts/" + id).then((response) => {
         commit("SET_POST_DATA", response.data); 
         if(response.data.postedBy === rootState.userModule.userAuthData._id) {
