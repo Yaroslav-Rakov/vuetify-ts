@@ -1,6 +1,6 @@
 import router from '@/router'
-import api from '../api.ts'
-import { getAccessToken, setAccessToken } from '../auth.ts'
+import api from '../api'
+import { getAccessToken, setAccessToken } from '../auth'
 
 const userModule = {
     state: {
@@ -8,10 +8,10 @@ const userModule = {
       userAuthData: []
     },
     mutations: {
-      SET_AUTH_DATA(state, authData) {
+        SET_AUTH_DATA(state: any, authData: Array<any>) {
         state.userAuthData = authData
       },
-      SET_TOKEN(state, token) {
+      SET_TOKEN(state:any, token:string) {
         state.token = token
         setAccessToken(token)
   
@@ -19,13 +19,13 @@ const userModule = {
       }
     },
     getters: {
-      GET_AUTH_DATA(state) {
+      GET_AUTH_DATA(state: any) {
         console.log(state.userAuthData);
         return state.userAuthData;
       },
     },
     actions: {
-      ACTION_REGISTER_DATA(commit, user) {
+        ACTION_REGISTER_DATA(commit: any, user: Array<any>) {
         return new Promise((resolve, reject) => {
           commit = null;
           api
@@ -40,7 +40,7 @@ const userModule = {
         });
       },
   
-      ACTION_LOGIN({ commit }, user) {
+        ACTION_LOGIN({ commit }: any, user: Array<any>) {
         return new Promise((resolve, reject) => {
           api
             .post("auth", user)
@@ -55,7 +55,7 @@ const userModule = {
         });
   
       },
-        ACTION_AUTH_DATA({ commit }) {
+        ACTION_AUTH_DATA({ commit }:any) {
        return new Promise((resolve, reject) => {
         console.log('ACTION_AUTH_DATA works');
         if (getAccessToken()) {

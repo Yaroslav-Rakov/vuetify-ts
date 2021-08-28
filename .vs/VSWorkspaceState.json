@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\store",
+    "\\src\\store\\modules",
+    "\\src\\views"
+  ],
+  "SelectedNode": "\\src\\store\\modules\\postsModule.ts",
+  "PreviewInSolutionExplorer": false
+}
